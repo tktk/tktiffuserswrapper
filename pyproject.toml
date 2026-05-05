@@ -1,0 +1,7 @@
+[project]
+name = "tktiffuserswrapper"
+version = "1.0.0"
+
+dependencies = [
+    "Pillow",
+]
