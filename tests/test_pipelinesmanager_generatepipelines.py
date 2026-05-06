@@ -2,8 +2,8 @@ import unittest
 
 from tktiffuserswrapper.pipelinesmanager import PipelinesManager
 
-_PIPELINE_FOR_T2I = 10
-_PIPELINE_FOR_I2I = 20
+_PIPELINE_FOR_TEXT2IMAGE = 10
+_PIPELINE_FOR_IMAGE2IMAGE = 20
 _PIPELINE_FOR_INPAINT = 30
 
 class TestPipelinesManagerGeneratePipelines( unittest.TestCase ):
@@ -13,8 +13,8 @@ class TestPipelinesManagerGeneratePipelines( unittest.TestCase ):
         pipelinesManager.generatePipelines( _generatePipelines )
 
         _self.assertEqual( _generatePipelines, pipelinesManager._beforeGeneratePipelines )
-        _self.assertEqual( _PIPELINE_FOR_T2I, pipelinesManager._pipelineForT2I )
-        _self.assertEqual( _PIPELINE_FOR_I2I, pipelinesManager._pipelineForI2I )
+        _self.assertEqual( _PIPELINE_FOR_TEXT2IMAGE, pipelinesManager._pipelineForText2Image )
+        _self.assertEqual( _PIPELINE_FOR_IMAGE2IMAGE, pipelinesManager._pipelineForImage2Image )
         _self.assertEqual( _PIPELINE_FOR_INPAINT, pipelinesManager._pipelineForInpaint )
 
     # TODO testAlreadyGenerated
@@ -22,7 +22,7 @@ class TestPipelinesManagerGeneratePipelines( unittest.TestCase ):
 
 def _generatePipelines(
 ):
-    return _PIPELINE_FOR_T2I, _PIPELINE_FOR_I2I, _PIPELINE_FOR_INPAINT
+    return _PIPELINE_FOR_TEXT2IMAGE, _PIPELINE_FOR_IMAGE2IMAGE, _PIPELINE_FOR_INPAINT
 
 if __name__ == '__main__':
     unittest.main()
