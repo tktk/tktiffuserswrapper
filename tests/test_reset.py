@@ -4,7 +4,7 @@ import tktiffuserswrapper as tw
 import inspect
 
 class TestReset( unittest.TestCase ):
-    def test_reset( _self ):
+    def test( _self ):
         tw.reset()
 
         _self.assertIsNone( tw.GENERATE_PIPELINES )

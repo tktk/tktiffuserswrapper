@@ -4,3 +4,9 @@ class PipelinesManager:
         _self._pipelineForT2I = None
         _self._pipelineForI2I = None
         _self._pipelineForInpaint = None
+
+    def generatePipelines(
+        _self,
+        _GENERATE_PIPELINES,
+    ):
+        pass
