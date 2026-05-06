@@ -1,4 +1,4 @@
-from tktiffuserswrapper import config
+import tktiffuserswrapper as tw
 import importlib
 import sys
 
@@ -15,7 +15,7 @@ def main(
     while True:
         input( "ENTERで生成を開始します" )
 
-        config.reset()
+        tw.reset()
 
         importlib.reload( SETUP_MODULE )
 
