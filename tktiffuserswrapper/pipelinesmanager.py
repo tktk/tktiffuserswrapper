@@ -9,4 +9,6 @@ class PipelinesManager:
         _self,
         _GENERATE_PIPELINES,
     ):
-        pass
+        _self._pipelineForT2I, _self._pipelineForI2I, _self._pipelineForInpaint = _GENERATE_PIPELINES()
+
+        _self._beforeGeneratePipelines = _GENERATE_PIPELINES
