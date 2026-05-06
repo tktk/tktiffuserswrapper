@@ -9,6 +9,9 @@ class PipelinesManager:
         _self,
         _GENERATE_PIPELINES,
     ):
+        if _self._beforeGeneratePipelines is not None:
+            return
+
         _self._pipelineForText2Image, _self._pipelineForImage2Image, _self._pipelineForInpaint = _GENERATE_PIPELINES()
 
         _self._beforeGeneratePipelines = _GENERATE_PIPELINES
