@@ -20,4 +20,5 @@ class PipelinesManager:
         _self,
         _PIPELINE_ARGS,
     ):
-        return None, None
+        #TODO
+        return _self._pipelineForText2Image, "t2i"
