@@ -28,6 +28,9 @@ class PipelinesManager:
         _PIPELINE_PREFIX_INPAINT = "inpaint"
 
         if _PIPELINE_ARGS_KEY_IMAGE in _PIPELINE_ARGS:
-            return _self._pipelineForImage2Image, _PIPELINE_PREFIX_IMAGE2IMAGE
+            if _PIPELINE_ARGS_KEY_MASK_IMAGE in _PIPELINE_ARGS:
+                return _self._pipelineForInpaint, _PIPELINE_PREFIX_INPAINT
+            else:
+                return _self._pipelineForImage2Image, _PIPELINE_PREFIX_IMAGE2IMAGE
 
         return _self._pipelineForText2Image, _PIPELINE_PREFIX_TEXT2IMAGE
