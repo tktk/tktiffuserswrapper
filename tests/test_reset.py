@@ -32,7 +32,7 @@ class TestReset( unittest.TestCase ):
             1,
         )
         _self.assertIsNone( tw.MANUAL_SEED )
-        _self.assertDictEqual( {}, tw.PNG_INFO_EXTRAS )
+        _self.assertEqual( {}, tw.PNG_INFO_EXTRAS )
         _self.assertEqual( "output", tw.OUTPUT_PATH_PREFIX )
         _self._assertCallable(
             tw.POST_PROCESS,
