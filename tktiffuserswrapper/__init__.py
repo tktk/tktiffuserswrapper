@@ -9,6 +9,11 @@ PNG_INFO_EXTRAS = None
 OUTPUT_PATH_PREFIX = None
 POST_PROCESS = None
 
+def _getPromptAndTokenizerListForCheck(
+    _,
+):
+    return []
+
 def _getTokenizers(
     _pipeline,
 ):
@@ -19,7 +24,7 @@ def _getPromptKeys(
     return []
 
 def _postProcess(
-    _OUTPUT_PATH,
+    _,
 ):
     pass
 
@@ -28,6 +33,7 @@ def reset(
     global GENERATE_PIPELINES
     global GENERATION_COUNT
     global GENERATE_PIPELINE_ARGS
+    global GET_PROMPT_AND_TOKENIZER_LIST_FOR_CHECK
     global GET_TOKENIZERS
     global GET_PROMPT_KEYS
     global MANUAL_SEED
@@ -38,6 +44,7 @@ def reset(
     GENERATE_PIPELINES = None
     GENERATION_COUNT = 1
     GENERATE_PIPELINE_ARGS = None
+    GET_PROMPT_AND_TOKENIZER_LIST_FOR_CHECK = _getPromptAndTokenizerListForCheck
     GET_TOKENIZERS = _getTokenizers
     GET_PROMPT_KEYS = _getPromptKeys
     MANUAL_SEED = None
