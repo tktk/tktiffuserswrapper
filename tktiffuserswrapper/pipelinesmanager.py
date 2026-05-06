@@ -15,3 +15,9 @@ class PipelinesManager:
         _self._pipelineForText2Image, _self._pipelineForImage2Image, _self._pipelineForInpaint = _GENERATE_PIPELINES()
 
         _self._beforeGeneratePipelines = _GENERATE_PIPELINES
+
+    def getSuitablePipeline(
+        _self,
+        _PIPELINE_ARGS,
+    ):
+        return None, None
