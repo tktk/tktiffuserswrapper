@@ -14,12 +14,21 @@ class TestReset( unittest.TestCase ):
         _self.assertEqual( _EXPECTED_PARAMTERS_COUNT, len( SIGNATURE.parameters ) )
 
     def test( _self ):
+        tw.GENERATE_PIPELINES = 10
+        tw.GENERATION_COUNT = 20
+        tw.GENERATE_PIPELINE_ARGS = 30
+        tw.GET_TOKENIZERS = 40
+        tw.GET_PROMPT_KEYS = 50
+        tw.MANUAL_SEED = 60
+        tw.PNG_INFO_EXTRAS = { "": 70 }
+        tw.OUTPUT_PATH_PREFIX = 80
+        tw.POST_PROCESS = 90
+
         tw.reset()
 
         _self.assertIsNone( tw.GENERATE_PIPELINES )
         _self.assertEqual( 1, tw.GENERATION_COUNT )
         _self.assertIsNone( tw.GENERATE_PIPELINE_ARGS )
-
         _self._assertCallable(
             tw.GET_TOKENIZERS,
             1,
@@ -28,10 +37,9 @@ class TestReset( unittest.TestCase ):
             tw.GET_PROMPT_KEYS,
             0,
         )
-
+        _self.assertIsNone( tw.MANUAL_SEED )
         _self.assertDictEqual( {}, tw.PNG_INFO_EXTRAS )
         _self.assertEqual( "output", tw.OUTPUT_PATH_PREFIX )
-
         _self._assertCallable(
             tw.POST_PROCESS,
             1,
