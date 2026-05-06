@@ -1,16 +1,16 @@
 GENERATE_PIPELINES = None
 GENERATION_COUNT = None
 GENERATE_PIPELINE_ARGS = None
-GET_PROMPT_AND_TOKENIZER_LIST_FOR_CHECK = None
+GET_TOKENIZER_AND_PROMPT_MAP_FOR_CHECK = None
 MANUAL_SEED = None
 PNG_INFO_EXTRAS = None
 OUTPUT_PATH_PREFIX = None
 POST_PROCESS = None
 
-def _getPromptAndTokenizerListForCheck(
+def _getTokenizerAndPromptMapForCheck(
     _,
 ):
-    return []
+    return {}
 
 def _postProcess(
     _,
@@ -22,7 +22,7 @@ def reset(
     global GENERATE_PIPELINES
     global GENERATION_COUNT
     global GENERATE_PIPELINE_ARGS
-    global GET_PROMPT_AND_TOKENIZER_LIST_FOR_CHECK
+    global GET_TOKENIZER_AND_PROMPT_MAP_FOR_CHECK
     global MANUAL_SEED
     global PNG_INFO_EXTRAS
     global OUTPUT_PATH_PREFIX
@@ -31,7 +31,7 @@ def reset(
     GENERATE_PIPELINES = None
     GENERATION_COUNT = 1
     GENERATE_PIPELINE_ARGS = None
-    GET_PROMPT_AND_TOKENIZER_LIST_FOR_CHECK = _getPromptAndTokenizerListForCheck
+    GET_TOKENIZER_AND_PROMPT_MAP_FOR_CHECK = _getTokenizerAndPromptMapForCheck
     MANUAL_SEED = None
     PNG_INFO_EXTRAS = {}
     OUTPUT_PATH_PREFIX = "output"

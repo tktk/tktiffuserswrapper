@@ -28,7 +28,7 @@ class TestReset( unittest.TestCase ):
         _self.assertEqual( 1, tw.GENERATION_COUNT )
         _self.assertIsNone( tw.GENERATE_PIPELINE_ARGS )
         _self._assertCallable(
-            tw.GET_PROMPT_AND_TOKENIZER_LIST_FOR_CHECK,
+            tw.GET_TOKENIZER_AND_PROMPT_MAP_FOR_CHECK,
             1,
         )
         _self.assertIsNone( tw.MANUAL_SEED )

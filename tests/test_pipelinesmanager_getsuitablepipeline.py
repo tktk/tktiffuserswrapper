@@ -23,7 +23,7 @@ class TestPipelinesManagerGetSuitablePipeline( unittest.TestCase ):
         _self.assertEqual( _EXPECTED_PIPELINE, PIPELINE )
         _self.assertEqual( _EXPECTED_PIPELINE_PREFIX, PIPELINE_PREFIX )
 
-    def testText2Image( _self ):
+    def test_text2Image( _self ):
         _self._test(
             {
                 "mask_image": 40,
@@ -32,7 +32,7 @@ class TestPipelinesManagerGetSuitablePipeline( unittest.TestCase ):
             "t2i",
         )
 
-    def testImage2Image( _self ):
+    def test_image2Image( _self ):
         _self._test(
             {
                 "image": 50,
@@ -41,7 +41,7 @@ class TestPipelinesManagerGetSuitablePipeline( unittest.TestCase ):
             "i2i",
         )
 
-    def testInpaint( _self ):
+    def test_inpaint( _self ):
         _self._test(
             {
                 "image": 60,

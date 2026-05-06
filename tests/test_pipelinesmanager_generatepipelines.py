@@ -21,7 +21,7 @@ class TestPipelinesManagerGeneratePipelines( unittest.TestCase ):
         _self.assertEqual( _PIPELINE_FOR_IMAGE2IMAGE, pipelinesManager._pipelineForImage2Image )
         _self.assertEqual( _PIPELINE_FOR_INPAINT, pipelinesManager._pipelineForInpaint )
 
-    def testAlreadyGenerated( _self ):
+    def test_alreadyGenerated( _self ):
         pipelinesManager = PipelinesManager()
 
         pipelinesManager._beforeGeneratePipelines = _generatePipelines
@@ -35,7 +35,7 @@ class TestPipelinesManagerGeneratePipelines( unittest.TestCase ):
         _self.assertEqual( _BEFORE_PIPELINE_FOR_IMAGE2IMAGE, pipelinesManager._pipelineForImage2Image )
         _self.assertEqual( _BEFORE_PIPELINE_FOR_INPAINT, pipelinesManager._pipelineForInpaint )
 
-    def testChangedGeneratePipelines( _self ):
+    def test_changedGeneratePipelines( _self ):
         pipelinesManager = PipelinesManager()
 
         pipelinesManager._beforeGeneratePipelines = lambda _: 70
