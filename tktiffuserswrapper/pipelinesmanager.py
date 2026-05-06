@@ -9,7 +9,7 @@ class PipelinesManager:
         _self,
         _GENERATE_PIPELINES,
     ):
-        if _self._beforeGeneratePipelines is not None:
+        if _self._beforeGeneratePipelines is not None and _self._beforeGeneratePipelines.__code__ == _GENERATE_PIPELINES.__code__:
             return
 
         _self._pipelineForText2Image, _self._pipelineForImage2Image, _self._pipelineForInpaint = _GENERATE_PIPELINES()
