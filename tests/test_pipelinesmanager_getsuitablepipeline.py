@@ -41,7 +41,15 @@ class TestPipelinesManagerGetSuitablePipeline( unittest.TestCase ):
             "i2i",
         )
 
-    # TODO testInpaint
+    def testInpaint( _self ):
+        _self._test(
+            {
+                "image": 60,
+                "mask_image": 70,
+            },
+            _PIPELINE_FOR_INPAINT,
+            "inpaint",
+        )
 
 if __name__ == '__main__':
     unittest.main()
