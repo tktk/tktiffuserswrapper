@@ -17,8 +17,6 @@ class TestReset( unittest.TestCase ):
         tw.GENERATE_PIPELINES = 10
         tw.GENERATION_COUNT = 20
         tw.GENERATE_PIPELINE_ARGS = 30
-        tw.GET_TOKENIZERS = 40  #REMOVEME
-        tw.GET_PROMPT_KEYS = 50 #REMOVEME
         tw.MANUAL_SEED = 60
         tw.PNG_INFO_EXTRAS = { "": 70 }
         tw.OUTPUT_PATH_PREFIX = 80
@@ -32,14 +30,6 @@ class TestReset( unittest.TestCase ):
         _self._assertCallable(
             tw.GET_PROMPT_AND_TOKENIZER_LIST_FOR_CHECK,
             1,
-        )
-        _self._assertCallable(
-            tw.GET_TOKENIZERS,
-            1,
-        )
-        _self._assertCallable(
-            tw.GET_PROMPT_KEYS,
-            0,
         )
         _self.assertIsNone( tw.MANUAL_SEED )
         _self.assertDictEqual( {}, tw.PNG_INFO_EXTRAS )
