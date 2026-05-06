@@ -20,5 +20,14 @@ class PipelinesManager:
         _self,
         _PIPELINE_ARGS,
     ):
-        #TODO
-        return _self._pipelineForText2Image, "t2i"
+        _PIPELINE_ARGS_KEY_IMAGE = "image"
+        _PIPELINE_ARGS_KEY_MASK_IMAGE = "mask_image"
+
+        _PIPELINE_PREFIX_TEXT2IMAGE = "t2i"
+        _PIPELINE_PREFIX_IMAGE2IMAGE = "i2i"
+        _PIPELINE_PREFIX_INPAINT = "inpaint"
+
+        if _PIPELINE_ARGS_KEY_IMAGE in _PIPELINE_ARGS:
+            return _self._pipelineForImage2Image, _PIPELINE_PREFIX_IMAGE2IMAGE
+
+        return _self._pipelineForText2Image, _PIPELINE_PREFIX_TEXT2IMAGE
