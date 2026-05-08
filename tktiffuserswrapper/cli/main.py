@@ -8,10 +8,9 @@ import sys
 
 def _promptsAreTooLong(
     _TOKENIZER_AND_PROMPT_MAP,
-    _PIPELINE_ARGS,
 ):
     #TODO
-    return False
+    return True
     tooLong = False
 
     for PROMPT_KEY, tokenizerAndPrompt in _TOKENIZER_AND_PROMPT_MAP.items():
@@ -71,10 +70,7 @@ def main(
             else:
                 print( "inpaint用パイプラインを使用します" )
 
-            if _promptsAreTooLong(
-                tw.GET_TOKENIZER_AND_PROMPT_MAP_FOR_CHECK( pipeline ),
-                PIPELINE_ARGS,
-            ) == True:
+            if _promptsAreTooLong( tw.GET_TOKENIZER_AND_PROMPT_MAP_FOR_CHECK( pipeline ) ) == True:
                 continue
 
             PNG_INFO = generatePngInfo(
