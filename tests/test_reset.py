@@ -18,7 +18,7 @@ class TestReset( unittest.TestCase ):
         tw.GENERATION_COUNT = 20
         tw.GENERATE_PIPELINE_ARGS = 30
         tw.MANUAL_SEED = 60
-        tw.PNG_INFO_EXTRAS = { "": 70 }
+        tw.PNG_INFO_EXTRAS = 70
         tw.OUTPUT_PATH_PREFIX = 80
         tw.POST_PROCESS = 90
 

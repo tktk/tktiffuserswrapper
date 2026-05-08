@@ -10,7 +10,7 @@ def _dummy_add_text(
 ):
     _texts[ _KEY ] = _VALUE
 
-class TestPnpInfoGeneratePngInfo( unittest.TestCase ):
+class TestPngInfoGeneratePngInfo( unittest.TestCase ):
     def test( _self ):
         texts = {}
 
