@@ -5,6 +5,7 @@ from datetime import datetime
 import tktiffuserswrapper as tw
 import importlib
 import sys
+import traceback
 
 def _promptsAreTooLong(
     _TOKENIZER_AND_PROMPT_MAP,
@@ -51,45 +52,55 @@ def main(
     while True:
         input( "ENTERで生成を開始します" )
 
-        tw.reset()
+        try:
+            tw.reset()
 
-        importlib.reload( SETUP_MODULE )
+            importlib.reload( SETUP_MODULE )
 
-        pipelinesManager.generatePipelines( tw.GENERATE_PIPELINES )
+            pipelinesManager.generatePipelines( tw.GENERATE_PIPELINES )
+        except:
+            print( traceback.format_exc() )
+
+            continue
 
         for _ in range( tw.GENERATION_COUNT ):
-            PIPELINE_ARGS = tw.GENERATE_PIPELINE_ARGS()
+            try:
+                PIPELINE_ARGS = tw.GENERATE_PIPELINE_ARGS()
 
-            pipeline, PIPELINE_TYPE = pipelinesManager.getSuitablePipeline( PIPELINE_ARGS )
-            if "t2i" in PIPELINE_TYPE:
-                print( "text2image用パイプラインを使用します" )
-            elif "i2i" in PIPELINE_TYPE:
-                print( "image2image用パイプラインを使用します" )
-            else:
-                print( "inpaint用パイプラインを使用します" )
+                pipeline, PIPELINE_TYPE = pipelinesManager.getSuitablePipeline( PIPELINE_ARGS )
+                if "t2i" in PIPELINE_TYPE:
+                    print( "text2image用パイプラインを使用します" )
+                elif "i2i" in PIPELINE_TYPE:
+                    print( "image2image用パイプラインを使用します" )
+                else:
+                    print( "inpaint用パイプラインを使用します" )
 
-            if _promptsAreTooLong( tw.GET_TOKENIZER_AND_PROMPT_MAP_FOR_CHECK( pipeline ) ) == True:
+                if _promptsAreTooLong( tw.GET_TOKENIZER_AND_PROMPT_MAP_FOR_CHECK( pipeline ) ) == True:
+                    continue
+
+                PNG_INFO = generatePngInfo(
+                    PIPELINE_ARGS,
+                    tw.PNG_INFO_EXTRAS,
+                )
+
+                OUTPUT_PATH = _generateOutputPath(
+                    tw.OUTPUT_PATH_PREFIX,
+                    PIPELINE_TYPE,
+                )
+
+                IMAGES = pipeline( **PIPELINE_ARGS ).images
+
+                IMAGES[ 0 ].save(
+                    OUTPUT_PATH,
+                    pnginfo = PNG_INFO,
+                )
+
+                print( f"{OUTPUT_PATH}を生成しました" )
+
+                tw.POST_PROCESS( OUTPUT_PATH )
+            except:
+                print( traceback.format_exc() )
+
                 continue
-
-            PNG_INFO = generatePngInfo(
-                PIPELINE_ARGS,
-                tw.PNG_INFO_EXTRAS,
-            )
-
-            OUTPUT_PATH = _generateOutputPath(
-                tw.OUTPUT_PATH_PREFIX,
-                PIPELINE_TYPE,
-            )
-
-            IMAGES = pipeline( **PIPELINE_ARGS ).images
-
-            IMAGES[ 0 ].save(
-                OUTPUT_PATH,
-                pnginfo = PNG_INFO,
-            )
-
-            print( f"{OUTPUT_PATH}を生成しました" )
-
-            tw.POST_PROCESS( OUTPUT_PATH )
 
     return 0
