@@ -33,8 +33,6 @@ def _generateOutputPath(
     _PREFIX,
     _PIPELINE_TYPE,
 ):
-    #TODO
-    return ""
     NOW = datetime.now()
 
     TIMESTAMP = NOW.strftime( "%Y%m%d%H%M%S_%f" )
