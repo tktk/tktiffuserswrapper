@@ -4,12 +4,16 @@ import unittest
 
 from tktiffuserswrapper.cli.main import _promptsAreTooLong
 
+callCount = 0
+
 class TestCliMainPromptsAreTooLong( unittest.TestCase ):
     def _test(
         _self,
         _RETURNS_PROMPT_IS_TOO_LONG_LIST,
         _EXPECTED,
     ):
+        global callCount
+
         callCount = 0
 
         with patch( "tktiffuserswrapper.cli.main.promptIsTooLong" ) as mockPromptIsTooLong:
@@ -21,9 +25,9 @@ class TestCliMainPromptsAreTooLong( unittest.TestCase ):
 
                 RESULT = _RETURNS_PROMPT_IS_TOO_LONG_LIST[ callCount ]
 
-                callCount += 0
+                callCount += 1
 
-                return RESULT
+                return RESULT, 10, 20
 
             mockPromptIsTooLong.side_effect = _promptIsTooLongDummy
 
@@ -54,15 +58,24 @@ class TestCliMainPromptsAreTooLong( unittest.TestCase ):
     def test( _self ):
         _self._test(
             [
-                False,
-                False,
-                False,
-                False,
+                None,
+                None,
+                None,
+                None,
             ],
             False,
         )
 
-    #TODO testTooLong
+    def testTooLong( _self ):
+        _self._test(
+            [
+                None,
+                None,
+                30,
+                None,
+            ],
+            True,
+        )
 
 if __name__ == '__main__':
     unittest.main()
