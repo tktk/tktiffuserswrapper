@@ -1,10 +1,10 @@
 [project]
 name = "tktiffuserswrapper"
-version = "1.0.1"
+version = "1.0.2"
 
 dependencies = [
     "Pillow",
 ]
 
 [project.scripts]
-tktiffuserswrapper = "tktiffuserswrapper.cli.main.main"
+tktiffuserswrapper = "tktiffuserswrapper.cli.main:main"
