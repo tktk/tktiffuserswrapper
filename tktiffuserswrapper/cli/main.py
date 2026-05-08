@@ -9,8 +9,6 @@ import sys
 def _promptsAreTooLong(
     _TOKENIZER_AND_PROMPT_MAP,
 ):
-    #TODO
-    return False
     tooLong = False
 
     for PROMPT_KEY, tokenizerAndPrompt in _TOKENIZER_AND_PROMPT_MAP.items():
